@@ -1,0 +1,18 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form > .field:not(:first-child) {
+    margin-top: 0.25rem;
+}
+.form > .field:not(:last-child) {
+    margin-bottom: 0.25rem;
+}
+
+.form > .field-compact:not(:first-child) {
+    margin-top: 0;
+}
+.form > .field-compact:not(:last-child) {
+    margin-bottom: 0;
+}
