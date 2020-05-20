@@ -3814,10 +3814,10 @@ emerald-observable@0.1.3:
     "@types/react" "^16.9.35"
     react "^16.13.1"
 
-emerald-validation@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/emerald-validation/-/emerald-validation-0.1.0.tgz#faf453d39b0305bb6d0175a81b37c52bba2e7ffc"
-  integrity sha512-YvN9EkdRXmrkBBRksVBsD1cY3lvtOyI3THMn4wHLfBZpnpr7b/icH2LJQrvrbnbQi1EjAs+Dcd8XjlfvnETTPw==
+emerald-validation@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/emerald-validation/-/emerald-validation-0.1.3.tgz#dc0f785f7e5b9cc8728b9758b93d5ae5b3d18195"
+  integrity sha512-p3XWaLnAXr3qug0rNOBPzyt7IiHt5hWSXoH0r8YZB0rTYGK/I73Kfso04+1mDfW7RFqWWHBe2IHRSI8gDQT2Kg==
   dependencies:
     "@types/react" "^16.9.35"
     emerald-observable "0.1.2"
