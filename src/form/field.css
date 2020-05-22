@@ -22,7 +22,7 @@
 .field-label {
     display: flex;
     flex-direction: row;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 600;
     margin-bottom: 0.25rem;
 }

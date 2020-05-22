@@ -1,7 +1,18 @@
+html {
+    height: 100%;
+}
+
 body {
+    display: flex;
     font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue",
         sans-serif;
+    height: 100%;
     margin: 0;
+}
+
+#root {
+    display: flex;
+    flex-grow: 1;
 }
 
 .app {
@@ -11,61 +22,26 @@ body {
 }
 
 /**
- * Flex Styles
+ * AzureDevOps UI overrides
  */
-.flex-column {
-    display: flex;
-    flex-direction: column;
+.bolt-focus-treatment,
+.focus-treatment {
+    animation: none !important;
+    box-shadow: none !important;
 }
 
-.flex-row {
-    display: flex;
-    flex-direction: row;
+.bolt-textfield-input {
+    padding: 5px 6px 4px 6px;
 }
 
-.flex-grow {
-    flex-grow: 1;
+.field-error-state .bolt-textfield {
+    border-color: rgba(205, 74, 69, 1) !important;
 }
 
-.align-items-center {
-    align-items: center;
+.bolt-checkbox.bolt-focus-treatment {
+    border: 1px solid transparent;
 }
 
-.align-items-end {
-    align-items: flex-end;
-}
-
-.align-items-start {
-    align-items: flex-start;
-}
-
-.justify-content-center {
-    justify-content: center;
-}
-
-.justify-content-end {
-    justify-content: flex-end;
-}
-
-.justify-content-start {
-    justify-content: flex-start;
-}
-
-.justify-self-center {
-    justify-self: center;
-}
-
-.justify-self-end {
-    justify-self: flex-end;
-}
-
-.justify-self-start {
-    justify-self: flex-start;
-}
-
-/**
- * Spacing styles
- */
-.horizontal-spacing-small > *:not(:first-child) {
-    margin-left: 0.25rem;
+.bolt-focus-visible .bolt-checkbox.bolt-focus-treatment:focus {
+    border: 1px solid rgba(0, 120, 212, 1);
 }

@@ -12,6 +12,7 @@ import "./form.css";
 export interface IFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
     className?: string;
     validateOnBlur?: IReadonlyObservableValue<boolean> | boolean;
+    validateOnChange?: IReadonlyObservableValue<boolean> | boolean;
 }
 
 /**
@@ -21,7 +22,7 @@ export interface IFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
  * @param props The basic properties for the HTML form element.
  */
 export function Form(props: IFormProps & { children?: React.ReactNode }) {
-    const { validateOnBlur, ...formProps } = props;
+    const { validateOnBlur, validateOnChange, ...formProps } = props;
 
     const [validationContext] = React.useState(() => new ValidationContextImplementation());
 
@@ -42,6 +43,9 @@ export function Form(props: IFormProps & { children?: React.ReactNode }) {
             // Ignore failed validation passes, they were interrupted by a new pass.
         });
     };
+
+    // Ensure our validateOnChange is up to data on our context.
+    validationContext.validateOnChange.value = !!getValue(validateOnChange);
 
     // Perform validation on values when the form is initially rendered.
     // At this point the form will have the proper validation state.
