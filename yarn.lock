@@ -1517,7 +1517,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.9.0", "@types/react@^16.9.35":
+"@types/react@*", "@types/react@^16.9.0":
   version "16.9.35"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.35.tgz#a0830d172e8aadd9bd41709ba2281a3124bbd368"
   integrity sha512-q0n0SsWcGc8nDqH2GJfWQWUOmZSJhXV64CjVN5SvcNti3TdEaA3AH0D8DwNmMdzjMAC/78tB8nAZIlV8yTz+zQ==
@@ -3818,30 +3818,21 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-emerald-observable@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/emerald-observable/-/emerald-observable-0.1.2.tgz#4b107b4d3701e946acd1751c85e530b6d6d1aa8b"
-  integrity sha512-i/o34YZTjtt41TfB732Yy9ZmllUfXrw4vDrbMySo8MrfTpHMSTXirGxMKmWcUP3r4peLBy8UkFVpMpc+fppo+A==
+emerald-observable@0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/emerald-observable/-/emerald-observable-0.1.7.tgz#0c8fa4a7238756889c43cc245ed3d90b2445050c"
+  integrity sha512-urXfdUQOCqfsf99pUaP6WWGAq800//rILx/SDBM+wfH6hcdEAgCgQFbeP/2f4CgSgd8bJpm55DnvILQHbDs5Hg==
   dependencies:
-    "@types/react" "^16.9.35"
     react "^16.13.1"
 
-emerald-observable@0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/emerald-observable/-/emerald-observable-0.1.3.tgz#4748a80f076763b72a71a501ae0bf33a5b9c5a21"
-  integrity sha512-kFCozPT2pgPuvJFHFpSQO7solzp0cCFNX/BxcgPaoSF6fVsCtGOGH7LtOklM51fiXtU5XLAdhsQj9s1F+udjwg==
+emerald-validation@0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/emerald-validation/-/emerald-validation-0.1.12.tgz#feaf9e8df28fad908a9ea01b9cd0b45574be703a"
+  integrity sha512-Eni+jdBsuipQemF1AveWhcUJJcQ1m7oEiAfRYkXjQ5j/VLHDdGE0mmJm7nGyid8nIwFC60ihrVsjyj1WoXEW8g==
   dependencies:
-    "@types/react" "^16.9.35"
+    emerald-observable "0.1.7"
     react "^16.13.1"
-
-emerald-validation@0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/emerald-validation/-/emerald-validation-0.1.5.tgz#f2076e79df757c4aff8d80856e4d7ad1bf10a59b"
-  integrity sha512-z44zjblrqzxza6m1LeQnZmN7g5Meuk2E5L7orHgmcnlAtA/V/k+Fnn/UaxiLoegdbapY5PHhnDBWDJZosU+AXg==
-  dependencies:
-    "@types/react" "^16.9.35"
-    emerald-observable "0.1.2"
-    react "^16.13.1"
+    react-dom "^16.13.1"
 
 emoji-regex@^7.0.1, emoji-regex@^7.0.2:
   version "7.0.3"
