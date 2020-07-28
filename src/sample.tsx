@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Observer, useObservable } from "emerald-observable";
-import { IValidationContext, Validation, ValidationContext } from "emerald-validation";
+import { IValidationContext, Validation, ValidationContext, ValidationBoundaryWithDelegate } from "emerald-validation";
 import { Button } from "azure-devops-ui/Button";
 import { Card } from "azure-devops-ui/Card";
 import { Checkbox } from "azure-devops-ui/Checkbox";
@@ -130,77 +130,79 @@ export function SampleForm(props: ISampleFormProps & { children?: React.ReactNod
                 validateOnBlur={props.validateOnBlur}
                 validateOnChange={props.validateOnChange}
             >
-                <Field label="Name" required={true} showErrors={props.showErrors}>
-                    <Validation validation={aggregate([equal(name, "DakotaEmber"), required(name)])} value={name}>
+                <ValidationBoundaryWithDelegate validationComplete={(errors: Error[]) => console.log(errors)}>
+                    <Field label="Name" required={true} showErrors={props.showErrors}>
+                        <Validation validation={aggregate([equal(name, "DakotaEmber"), required(name)])} value={name}>
+                            <TextField
+                                containerClassName="flex-grow"
+                                onChange={(event) => setName(event.target.value)}
+                                required={true}
+                                spellCheck={false}
+                                value={name}
+                            />
+                        </Validation>
+                    </Field>
+                    <Field label="Phone" required={true} showErrors={props.showErrors}>
+                        <Validation validation={phoneNumber(pn)} value={pn}>
+                            <TextField
+                                containerClassName="flex-grow"
+                                onChange={(event) => setPn(event.target.value)}
+                                spellCheck={false}
+                                value={pn}
+                            />
+                        </Validation>
+                    </Field>
+                    <Field label="Address" validate={false}>
                         <TextField
                             containerClassName="flex-grow"
-                            onChange={(event) => setName(event.target.value)}
-                            required={true}
+                            onChange={(event) => setAddress(event.target.value)}
                             spellCheck={false}
-                            value={name}
+                            value={address}
                         />
-                    </Validation>
-                </Field>
-                <Field label="Phone" required={true} showErrors={props.showErrors}>
-                    <Validation validation={phoneNumber(pn)} value={pn}>
-                        <TextField
-                            containerClassName="flex-grow"
-                            onChange={(event) => setPn(event.target.value)}
-                            spellCheck={false}
-                            value={pn}
-                        />
-                    </Validation>
-                </Field>
-                <Field label="Address" validate={false}>
-                    <TextField
-                        containerClassName="flex-grow"
-                        onChange={(event) => setAddress(event.target.value)}
-                        spellCheck={false}
-                        value={address}
+                    </Field>
+                    <Checkbox
+                        checked={inc}
+                        className="flex-self-start"
+                        label="Include me on the mailing list"
+                        onChange={(_, checked) => setInc(checked)}
                     />
-                </Field>
-                <Checkbox
-                    checked={inc}
-                    className="flex-self-start"
-                    label="Include me on the mailing list"
-                    onChange={(_, checked) => setInc(checked)}
-                />
-                <Checkbox
-                    checked={agree}
-                    className="flex-self-start"
-                    label="I agree to the terms of service"
-                    onChange={(_, checked) => setAgree(checked)}
-                />
+                    <Checkbox
+                        checked={agree}
+                        className="flex-self-start"
+                        label="I agree to the terms of service"
+                        onChange={(_, checked) => setAgree(checked)}
+                    />
 
-                <Validation
-                    validation={(event) => {
-                        event.pending(
-                            new Promise<void>((resolve) => {
-                                window.setTimeout(() => {
-                                    !agree.value && event.fail("You must agree to the terms of service");
-                                    resolve();
-                                }, 100);
-                            })
-                        );
-                    }}
-                    value={agree}
-                />
+                    <Validation
+                        validation={(event) => {
+                            event.pending(
+                                new Promise<void>((resolve) => {
+                                    window.setTimeout(() => {
+                                        !agree.value && event.fail("You must agree to the terms of service");
+                                        resolve();
+                                    }, 100);
+                                })
+                            );
+                        }}
+                        value={agree}
+                    />
 
-                <div className="flex-row" style={{ marginTop: "16px" }}>
-                    <Button onClick={clear}>Clear</Button>
-                    <div className="flex-grow" />
-                    <ValidationContext.Consumer>
-                        {(validationContext: IValidationContext) => (
-                            <Observer invalid={validationContext.invalid}>
-                                {({ invalid }: { invalid: boolean }) => (
-                                    <Button disabled={invalid} onClick={submit}>
-                                        Submit
-                                    </Button>
-                                )}
-                            </Observer>
-                        )}
-                    </ValidationContext.Consumer>
-                </div>
+                    <div className="flex-row" style={{ marginTop: "16px" }}>
+                        <Button onClick={clear}>Clear</Button>
+                        <div className="flex-grow" />
+                        <ValidationContext.Consumer>
+                            {(validationContext: IValidationContext) => (
+                                <Observer invalid={validationContext.invalid}>
+                                    {({ invalid }: { invalid: boolean }) => (
+                                        <Button disabled={invalid} onClick={submit}>
+                                            Submit
+                                        </Button>
+                                    )}
+                                </Observer>
+                            )}
+                        </ValidationContext.Consumer>
+                    </div>
+                </ValidationBoundaryWithDelegate>
             </Form>
         </Card>
     );

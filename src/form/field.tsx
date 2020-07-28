@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "../util/css";
 
-import { ValidationBoundary } from "emerald-validation";
+import { ValidationBoundaryWithState } from "emerald-validation";
 
 import "./field.css";
 
@@ -86,7 +86,7 @@ export function Field(props: IFieldProps & { children?: React.ReactNode }): Reac
     // Wrap the field element in a validation boundary if the caller wants
     // localized error handling.
     return validate ? (
-        <ValidationBoundary>
+        <ValidationBoundaryWithState>
             {({ errors }: { errors: Error[] }) => (
                 <div className={css(props.className, "field", props.compact && "field-compact", errors.length > 0 && "field-error-state")}>
                     {fieldName()}
@@ -100,7 +100,7 @@ export function Field(props: IFieldProps & { children?: React.ReactNode }): Reac
                         ))}
                 </div>
             )}
-        </ValidationBoundary>
+        </ValidationBoundaryWithState>
     ) : (
         <div className={css(props.className, "field", props.compact && "compact")}>
             {fieldName()}

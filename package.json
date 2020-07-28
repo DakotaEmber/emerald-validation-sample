@@ -6,8 +6,8 @@
   "license": "ISC",
   "dependencies": {
     "azure-devops-ui": "^2.166.3",
-    "emerald-observable": "0.1.7",
-    "emerald-validation": "0.1.12",
+    "emerald-observable": "0.1.8",
+    "emerald-validation": "0.1.14",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
