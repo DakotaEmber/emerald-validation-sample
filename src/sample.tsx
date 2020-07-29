@@ -62,6 +62,17 @@ export function SampleForm(props: ISampleFormProps & { children?: React.ReactNod
      * a component library, just a set of basic components that could be
      * used in this demonstration.
      *
+     * You will notice there is a validation boundary using a delegate
+     * around the entire form contents. This is for demonstration purposes
+     * only and doesn't effect any of the actual form validation. It is
+     * there to show how to use the delegate boundary.
+     *
+     * Next the Validation element that is the first child is purely for
+     * demonstration purposes as well, it shows you don't require children
+     * and you can pass an array of values. This adds the address to the
+     * set of values that trigger validation. Even though there is no
+     * validation function associated with this element.
+     *
      * Fields
      *  Name - this is marked required. Realize this is a UI concept
      *   only and doesnt affect the input within it. The Field contains a
@@ -131,6 +142,8 @@ export function SampleForm(props: ISampleFormProps & { children?: React.ReactNod
                 validateOnChange={props.validateOnChange}
             >
                 <ValidationBoundaryWithDelegate validationComplete={(errors: Error[]) => console.log(errors)}>
+                    <Validation value={[address, name, pn]} />
+
                     <Field label="Name" required={true} showErrors={props.showErrors}>
                         <Validation validation={aggregate([equal(name, "DakotaEmber"), required(name)])} value={name}>
                             <TextField
@@ -143,14 +156,13 @@ export function SampleForm(props: ISampleFormProps & { children?: React.ReactNod
                         </Validation>
                     </Field>
                     <Field label="Phone" required={true} showErrors={props.showErrors}>
-                        <Validation validation={phoneNumber(pn)} value={pn}>
-                            <TextField
-                                containerClassName="flex-grow"
-                                onChange={(event) => setPn(event.target.value)}
-                                spellCheck={false}
-                                value={pn}
-                            />
-                        </Validation>
+                        <Validation validation={phoneNumber(pn)} value={pn} />
+                        <TextField
+                            containerClassName="flex-grow"
+                            onChange={(event) => setPn(event.target.value)}
+                            spellCheck={false}
+                            value={pn}
+                        />
                     </Field>
                     <Field label="Address" validate={false}>
                         <TextField
